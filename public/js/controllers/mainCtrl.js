@@ -29,9 +29,10 @@ angular.module('mainCtrl', ['itemService'])
 
 })
 
-.controller('itemDetailController', function($scope, $routeParams, $http) {
-	Item.get($routeParams.item_id).success(function(data) {
-		$scope.item = data;
+.controller('itemDetailController', function($scope, $routeParams, $http, Item) {
+	Item.get($routeParams.itemId).success(function(data) {
+    console.log(data);
+		$scope.item = data[0];
 	});
 
 });

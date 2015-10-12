@@ -23,7 +23,7 @@
           <th>description</th>
         </tr>
         <tr ng-repeat="item in items | filter:query | orderBy:orderProp">
-          <td><a href="#/items/{{item.id}}">{{item.name}}</a></td>
+          <td><a href="/items/{{item.id}}">{{item.name}}</a></td>
           <td>{{item.description}}</td>
         </tr>
       </table>
