@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <!--Sidebar content-->
+
+      <div class="form-group">
+        <label for="search">Search:</label>
+          <input id="search" class="form-control" ng-model="query">
+        <label for="sort">Sort by:</label>
+        <select id="sort" class="form-control" ng-model="orderProp">
+          <option value="name">Alphabetical</option>
+          <option value="date_added">Newest</option>
+        </select>
+      </div>
+
+    </div>
+    <div class="col-md-10">
+      <!--Body content-->
+
+      <table class="table table-striped">
+        <tr>
+          <th>name</th>
+          <th>description</th>
+        </tr>
+        <tr ng-repeat="item in items | filter:query | orderBy:orderProp">
+          <td><a href="#/items/{{item.id}}">{{item.name}}</a></td>
+          <td>{{item.description}}</td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+</div>
