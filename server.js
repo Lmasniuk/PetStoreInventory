@@ -3,7 +3,6 @@ var app = express();
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var path = require('path');
-var config = require('./config.js');
 var mongoose = require('mongoose');
 
 // app config
@@ -11,7 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(express.static('public'));
-mongoose.connect(config.database);
+mongoose.connect(process.env.MONGOLAB_URI);
+var port = process.env.PORT || 8000;
 
 // api
 var apiRoutes = require('./app/routes/api.js')(app, express);
@@ -23,10 +23,10 @@ app.get('*', function(req, res) {
 });
 
 // start the server
-app.listen(config.port, function(err) {
+app.listen(port, function(err) {
   if (err) {
     console.error(err);
     return;
   }
-  console.log('http://localhost:%d/', config.port);
+  console.log('http://localhost:%d/', port);
 });
