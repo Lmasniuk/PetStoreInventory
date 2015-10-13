@@ -4,6 +4,11 @@ angular.module('mainCtrl', ['itemService'])
 
 .controller('itemListController', function($scope, $http, Item) {
   $scope.orderProp = 'date_added';
+  $scope.selectedItemId = -1;
+
+  $scope.selectItem = function(item) {
+    $scope.selectedItemId = item.id;
+  }
 
 	$scope.isLoading = true;
 
@@ -31,7 +36,6 @@ angular.module('mainCtrl', ['itemService'])
 
 .controller('itemDetailController', function($scope, $routeParams, $http, Item) {
 	Item.get($routeParams.itemId).success(function(data) {
-    console.log(data);
 		$scope.item = data[0];
 	});
 

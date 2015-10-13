@@ -1,34 +1,9 @@
-<h1>{{item.name}}</h1>
-
-<p>{{item.description}}</p>
-
-<table class="table table-striped">
-  <tr>
-    <td><b>ID</b></td>
-    <td>{{item.id}}</td>
-  </tr>
-  <tr>
-    <td><b>Quantity</b></td>
-    <td>{{item.quantity}}</td>
-  </tr>
-  <tr>
-    <td><b>Location</b></td>
-    <td>{{item.location}}</td>
-  </tr>
-  <tr>
-    <td><b>Brand</b></td>
-    <td>{{item.brand}}</td>
-  </tr>
-  <tr>
-    <td><b>Color</b></td>
-    <td>{{item.color}}</td>
-  </tr>
-  <tr>
-    <td><b>Date Added</b></td>
-    <td>{{item.date_added}}</td>
-  </tr>
-  <tr>
-    <td><b>Price</b></td>
-    <td>{{item.price}}</td>
-  </tr>
-</table>
+<h2>Item Details</h2>
+<hr>
+<ul class="list-group">
+  <li class="list-group-item"><strong>id:</strong> {{item.id}}</li>
+  <li class="list-group-item"><strong>Name:</strong>  {{item.name}}</li>
+  <li class="list-group-item"><strong>Price: </strong>  {{item.price}}</li>
+  <li class="list-group-item"><strong>Brand: </strong>  {{item.brand}}</li>
+  <li class="list-group-item"><strong>Quantity: </strong>  {{item.quantity}}</li>
+</ul>

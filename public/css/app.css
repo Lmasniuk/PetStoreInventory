@@ -1,0 +1,52 @@
+body {
+  background-color: #e8e8e8;
+}
+
+.container{
+	background-color: #99CCFF;
+	min-height: 600px;
+	margin-top: 50px;
+}
+
+.fill {
+	min-height: 100%;
+	height: 100%;
+}
+
+
+.border-box{
+	-moz-box-shadow: 0 0 2px black;
+    -webkit-box-shadow: 0 0 2px black;
+    box-shadow: 0 0 2px black;
+    min-height: 600px;
+}
+
+.list-group{
+	margin-bottom: 0px;
+}
+
+.item-in-list:hover{
+	background-color: #DBDBDB;
+}
+
+.item-in-list:active{
+	background-color: #AAAAAA;
+}
+
+.selected-item{
+	background-color: #AAAAAA;
+}
+
+.item-list-add{
+	width:100%;
+	background-color: #33CC33;
+}
+
+.itemDetails{
+	min-height: 600px;
+}
+
+.item-details-btn{
+	width:49.6%;
+	display: inline-block;
+}

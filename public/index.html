@@ -6,16 +6,28 @@
   <base href="/">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 list-group border-box well">
+        <div ng-include="'views/item-list.html'"
+             ng-controller="itemListController">
+        </div>
+      </div>
+      <div class="col-sm-6 border-box itemDetails">
+        <div ng-view></div>
+      </div>            
+    </div>
+  </div>
+
   <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="js/app.js"></script>
   <script src="js/controllers/mainCtrl.js"></script>
   <script src="js/services/itemService.js"></script>
-</head>
-<body>
-
-  <div ng-view></div>
-
 </body>
 </html>

@@ -7,8 +7,8 @@ angular.module('inventoryApp', [ 'ngRoute', 'mainCtrl', 'itemService' ])
           $routeProvider.
 
             when('/items', {
-            templateUrl: 'views/item-list.html',
-            controller: 'itemListController'
+            // templateUrl: 'views/item-list.html',
+            // controller: 'itemListController'
           }).
 
             when('/items/:itemId', {
