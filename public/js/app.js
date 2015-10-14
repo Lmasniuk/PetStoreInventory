@@ -6,18 +6,18 @@ angular.module('inventoryApp', [ 'ngRoute', 'mainCtrl', 'itemService' ])
         function($routeProvider, $locationProvider) {
           $routeProvider.
 
-            when('/items', {
+            when('/', {
             // templateUrl: 'views/item-list.html',
             // controller: 'itemListController'
           }).
 
-            when('/items/:itemId', {
+            when('/:itemId', {
             templateUrl: 'views/item-detail.html',
             controller: 'itemDetailController'
           }).
 
             otherwise({
-            redirectTo: '/items'
+            redirectTo: '/'
           });
 
           $locationProvider.html5Mode(true);

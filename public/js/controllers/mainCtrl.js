@@ -2,7 +2,7 @@
 
 angular.module('mainCtrl', ['itemService'])
 
-.controller('itemListController', function($scope, $http, Item) {
+.controller('itemListController', function($scope, $location, Item) {
   $scope.orderProp = 'date_added';
   $scope.selectedItemId = -1;
 
@@ -19,22 +19,28 @@ angular.module('mainCtrl', ['itemService'])
   });
 
   // function to delete a item
-  $scope.deleteItem = function(id) {
-    $scope.isLoading = true;
+  $scope.deleteItem = function() {
+    if ($location.path() === '/') {
+      return false;
+    }
 
-    Item.delete(id).success(function(data) {
+    $scope.isLoading = true;
+    var _id = $location.path().slice(1);
+
+    Item.delete(_id).success(function(data) {
       // get all items to update the table
       Item.all().success(function(data) {
+        $location.path('/');
         $scope.isLoading = false;
         $scope.items = data;
+        $scope.selectedItemId = -1;
       });
-
     });
   };
 
 })
 
-.controller('itemDetailController', function($scope, $routeParams, $http, Item) {
+.controller('itemDetailController', function($scope, $routeParams, Item) {
   Item.get($routeParams.itemId).success(function(data) {
     $scope.item = data;
   });
