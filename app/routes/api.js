@@ -34,7 +34,7 @@ module.exports = function(app, express) {
   apiRouter.route('/items/:itemId')
     // get an item
     .get(function(req, res) {
-      Item.find({id: req.params.itemId}, function(err, item) {
+      Item.findById(req.params.itemId, function(err, item) {
         if (err) res.send(err);
         res.json(item);
       });
@@ -42,7 +42,7 @@ module.exports = function(app, express) {
 
     // edit an item
     .put(function(req, res) {
-      Item.find({id: req.params.itemId}, function(err, item) {
+      Item.findById(req.params.itemId, function(err, item) {
         if (err) res.send(err);
 
         if (req.body.location)

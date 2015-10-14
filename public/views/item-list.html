@@ -15,9 +15,9 @@
 </div>
 <br>
 <ul class="item-list" >
-  <li ng-class="{ 'selected-list-item': item.id == selectedItemId }"
+  <li ng-class="{ 'selected-list-item': item._id == selectedItemId }"
       ng-repeat="item in items | filter:query | orderBy:orderProp">
-    <a ng-click='selectItem(item)'href="/items/{{item.id}}">{{item.name}}</a>
+    <a ng-click='selectItem(item)'href="/items/{{item._id}}">{{item.name}}</a>
   </li>
 </ul>
 <div class="list-controls">

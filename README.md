@@ -29,6 +29,5 @@ git push -f heroku <YOUR_BRANCH>:master
 ```
 
 ## todo
-* use _id instead of id
 * implement add/remove
 * create tests
