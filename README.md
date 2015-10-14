@@ -2,25 +2,31 @@
 An Inventory System for a Pet Store chain!
 
 ## setting up for development
-first, install [mongodb](http://docs.mongodb.org/manual/installation/)
-
-then clone the repository and install dependencies
-
 ```
 git clone https://github.com/Lmasniuk/PetStoreInventory.git
 cd PetStoreInventory
 npm install
+npm start
+open http://0.0.0.0:8000/
 ```
 
-next, seed the database:
+the mongodb connection string gets read from an environment variable. If you have the [heroku toolbelt](https://toolbelt.heroku.com/) set up, you can run:
+```
+heroku config:get MONGOLAB_URI -s >> .env
+```
 
-`mongoimport --db petstore --collection items --file app/data/items.json`
+another way of starting the server instead of `npm start` is to use `heroku local`. more info [here](https://devcenter.heroku.com/articles/heroku-local)
 
-then start the server
+## deploying
+add the heroku remote repository:
+```
+git remote add heroku https://git.heroku.com/petstore-inventory.git
+```
 
-`npm start`
-
-and open http://0.0.0.0:8000/ in your browser
+when you want to deploy, commit your changes and run:
+```
+git push -f heroku <YOUR_BRANCH>:master
+```
 
 ## todo
 * use _id instead of id

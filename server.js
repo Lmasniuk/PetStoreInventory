@@ -1,6 +1,5 @@
 var express = require('express')
 var app = express();
-var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var path = require('path');
 var mongoose = require('mongoose');
@@ -8,9 +7,10 @@ var mongoose = require('mongoose');
 // app config
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(morgan('dev'));
 app.use(express.static('public'));
-mongoose.connect(process.env.MONGOLAB_URI);
+mongoose.connect(process.env.MONGOLAB_URI, function(err) {
+  if (err) return console.error(err);
+});
 var port = process.env.PORT || 8000;
 
 // api
