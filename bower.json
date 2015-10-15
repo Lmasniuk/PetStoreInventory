@@ -9,6 +9,7 @@
     "angular": "1.4.x",
     "angular-route": "1.4.x",
     "bootstrap": "~3.3.5",
-    "jquery": "~2.1.1"
+    "jquery": "~2.1.1",
+    "angular-mocks": "~1.4.7"
   }
 }

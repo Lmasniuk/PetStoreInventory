@@ -28,6 +28,10 @@ when you want to deploy, commit your changes and run:
 git push -f heroku <YOUR_BRANCH>:master
 ```
 
+## testing
+```
+npm test
+```
+
 ## todo
 * implement add/remove
-* create tests
