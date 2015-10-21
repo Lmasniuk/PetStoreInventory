@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mainCtrl', ['itemService'])
+angular.module('inventoryApp')
 
 .controller('itemListController', function($scope, $location, Item) {
   $scope.orderProp = 'date_added';
@@ -17,6 +17,10 @@ angular.module('mainCtrl', ['itemService'])
     $scope.isLoading = false;
     $scope.items = data;
   });
+
+  // function to add an item
+  $scope.addItem = function() {
+  };
 
   // function to delete a item
   $scope.deleteItem = function() {
@@ -37,12 +41,5 @@ angular.module('mainCtrl', ['itemService'])
       });
     });
   };
-
-})
-
-.controller('itemDetailController', function($scope, $routeParams, Item) {
-  Item.get($routeParams.itemId).success(function(data) {
-    $scope.item = data;
-  });
 
 });

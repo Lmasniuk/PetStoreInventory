@@ -5,16 +5,16 @@ module.exports = function(app, express) {
 
   apiRouter.route('/items')
     // create an item
+    // TODO: validation
     .post(function(req, res) {
       var item = new Item();
-      item.id = req.body.id;
-      item.name = req.body.name;
-      item.description = req.body.description;
-      item.quantity = req.body.quantity;
-      item.location = req.body.location;
-      item.brand = req.body.brand;
-      item.price = req.body.price;
-      item.date_added = req.body.date_added;
+      item.name = req.body.name || '';
+      item.description = req.body.description || '';
+      item.quantity = req.body.quantity || 1;
+      item.location = req.body.location || '';
+      item.brand = req.body.brand || '';
+      item.price = req.body.price || '';
+      item.date_added = new Date().toISOString();
 
       item.save(function(err) {
         if (err) return res.send(err);
@@ -41,6 +41,7 @@ module.exports = function(app, express) {
     })
 
     // edit an item
+    // TODO: validation
     .put(function(req, res) {
       Item.findById(req.params.itemId, function(err, item) {
         if (err) res.send(err);
