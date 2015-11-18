@@ -1,5 +1,13 @@
 'use strict';
 
+/**
+ * itemService is a service that provides an
+ * interface for making HTTP requests to the server
+ *
+ * @namespace itemService
+ * @method Item
+ * @static
+ */
 angular.module('itemService', [])
 
 .factory('Item', function($http) {

@@ -1,5 +1,11 @@
 'use strict';
 
+/**
+ * Top level module of the inventory app.
+ * 
+ * @module inventoryApp
+ * @requires ngRoute, itemService
+ */
 angular.module('inventoryApp', [
   'ngRoute',
   // 'mainCtrl',

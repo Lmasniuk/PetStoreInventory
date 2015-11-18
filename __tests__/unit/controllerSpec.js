@@ -23,6 +23,16 @@ describe('inventory app controllers', function(){
       expect(scope.items).toEqual([{name: 'a'}, {name: 'b'}]);
     });
 
+    it('should update selectedItemId', function() {
+      scope.selectItem({_id: 5});
+      expect(scope.selectedItemId).toBe(5);
+    });
+
+
+    it('should have no item selected at the initial state', function() {
+      expect(scope.selectedItemId).toBe(-1);
+    });
+
   });
 
 
@@ -49,9 +59,6 @@ describe('inventory app controllers', function(){
 
 
   xdescribe('itemEditController', function(){
-
-    // TODO
-
   });
 
 });

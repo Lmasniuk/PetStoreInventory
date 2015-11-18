@@ -1,7 +1,17 @@
 'use strict';
 
+/**
+ * itemListController is a controller for the the list of items
+ * in the main view.
+ *
+ * @namespace inventoryApp
+ * @class itemListController
+ * @constructor
+ * @param $scope An Angular scope
+ * @param $location 
+ * @param Item Our own defined service for interfacing with http requests.
+ */
 angular.module('inventoryApp')
-
 .controller('itemListController', function($scope, $location, Item) {
   $scope.orderProp = 'date_added';
   $scope.selectedItemId = -1;
@@ -10,11 +20,8 @@ angular.module('inventoryApp')
     $scope.selectedItemId = item._id;
   }
 
-  $scope.isLoading = true;
-
   // grab all the items at page load
   Item.all().success(function(data) {
-    $scope.isLoading = false;
     $scope.items = data;
   });
 
@@ -28,14 +35,12 @@ angular.module('inventoryApp')
       return false;
     }
 
-    $scope.isLoading = true;
     var _id = $location.path().slice(1);
 
     Item.delete(_id).success(function(data) {
       // get all items to update the table
       Item.all().success(function(data) {
         $location.path('/');
-        $scope.isLoading = false;
         $scope.items = data;
         $scope.selectedItemId = -1;
       });

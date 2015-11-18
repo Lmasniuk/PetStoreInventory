@@ -11,7 +11,8 @@
   "scripts": {
     "postinstall": "./node_modules/bower/bin/bower install",
     "start": "env `cat .env` node server.js",
-    "test": "./node_modules/karma/bin/karma start __tests__/karma.conf.js"
+    "test": "./node_modules/karma/bin/karma start __tests__/karma.conf.js",
+    "doc": "yuidoc ."
   },
   "dependencies": {
     "body-parser": "^1.14.1",
@@ -24,6 +25,7 @@
     "karma": "^0.13.10",
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^0.2.1",
-    "phantomjs": "^1.9.18"
+    "phantomjs": "^1.9.18",
+    "yuidocjs": "^0.9.0"
   }
 }
