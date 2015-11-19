@@ -1,18 +1,16 @@
 <div class="modal-body">
   <div class="form-group" ng-hide="home.hideDuration">
-    <label>Name: </label>
-    <input type="text" ng-model="newItemName" placeholder="Enter name here">
-    <br><br>
-    <label>Price: </label>
-    <input type="text" ng-model="newItemPrice" placeholder="Enter price here">
-    <br><br>
-    <label>Supplier: </label>
-    <input type="text" ng-model="newItemSupplier" placeholder="Enter supplier here">
-    <br><br>
-    <label>Quantity: </label>
-    <input type="text" ng-model="newItemQuantity" placeholder="Enter quantity here">
-    <br><br><br>
-    <button type="button" class="btn btn-default item-details-button" data-dismiss="modal" ng-click="createItem()"> Add </button>
-    <button type="button" class="btn btn-default item-details-button" data-dismiss="modal"> Cancel </button>
+    <label>Name:</label>
+    <input class="form-control" type="text" ng-model="itemData.name">
+    <label>Price:</label>
+    <input class="form-control" type="text" ng-model="itemData.price">
+    <label>Brand:</label>
+    <input class="form-control" type="text" ng-model="itemData.brand">
+    <label>Quantity:</label>
+    <input class="form-control" type="text" ng-model="itemData.quantity">
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="updateItem()">Save</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
   </div>
 </div>
+
+

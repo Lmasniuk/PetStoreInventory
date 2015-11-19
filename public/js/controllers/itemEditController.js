@@ -12,10 +12,21 @@
  * @param Item Our own defined service for interfacing with http requests.
  */
 angular.module('inventoryApp')
-.controller('itemEditController', function($scope, $routeParams, Item) {
-  // TODO
-  $scope.createItem = function(newItem) {
-    Item.create().success(function(response) {
+.controller('itemEditController', function($scope, $route, $routeParams, Item) {
+  $scope.itemData = {};
+
+  $scope.updateItem = function() {
+    if (!$routeParams.itemId)
+      return;
+    Item.update($routeParams.itemId, $scope.itemData).success(function(response) {
+      if (response.errors) {
+        alert('update failed');
+      } else {
+        console.log('Update successful', response);
+        $scope.itemData = {};
+        $route.reload();
+      }
     });
   };
+
 });
