@@ -13,7 +13,7 @@
  */
 angular.module('inventoryApp')
 .controller('itemListController', function($scope, $location, Item) {
-  $scope.orderProp = 'date_added';
+  $scope.orderProp = '-date_added';
   $scope.selectedItemId = -1;
 
   $scope.selectItem = function(item) {
@@ -24,10 +24,6 @@ angular.module('inventoryApp')
   Item.all().success(function(data) {
     $scope.items = data;
   });
-
-  // function to add an item
-  $scope.addItem = function() {
-  };
 
   // function to delete a item
   $scope.deleteItem = function() {
