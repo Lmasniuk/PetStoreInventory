@@ -22,15 +22,28 @@
       </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Add a new item</h4>
+            <h4 class="modal-title" id="editModalLabel">Edit an item</h4>
           </div>
           <div ng-include="'views/item-edit.html'" ng-controller="itemEditController"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Modal -->
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="addModalLabel">add an item</h4>
+          </div>
+          <div ng-include="'views/item-edit.html'" ng-controller="itemAddController"></div>
         </div>
       </div>
     </div>
@@ -44,5 +57,6 @@
     <script src="js/controllers/itemListController.js"></script>
     <script src="js/controllers/itemDetailController.js"></script>
     <script src="js/controllers/itemEditController.js"></script>
+    <script src="js/controllers/itemAddController.js"></script>
   </body>
 </html>

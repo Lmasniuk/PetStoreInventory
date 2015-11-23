@@ -17,16 +17,20 @@ module.exports = function(app, express) {
       item.date_added = new Date().toISOString();
 
       item.save(function(err) {
-        if (err) return res.send(err);
-        res.json({ message: 'Item created!' });
+        if (err)
+          return res.send(err);
+        else
+          res.json({ message: 'Item created!' });
       });
     })
 
     // get all items
     .get(function(req, res) {
       Item.find(function(err, items) {
-        if (err) res.send(err);
-        res.json(items);
+        if (err)
+          res.send(err);
+        else
+          res.json(items);
       });
     });
 
@@ -46,12 +50,17 @@ module.exports = function(app, express) {
       Item.findById(req.params.itemId, function(err, item) {
         if (err) res.send(err);
 
-        if (req.body.location)
-          item.location = req.body.location;
+        if (req.body.location) item.location = req.body.location;
+        if (req.body.quantity) item.quantity = req.body.quantity;
+        if (req.body.price)    item.price = req.body.price;
+        if (req.body.brand)    item.brand = req.body.brand;
+        if (req.body.name)     item.name = req.body.name;
 
         item.save(function(err) {
-          if (err) res.send(err);
-          res.json({ message: 'Item updated!' });
+          if (err)
+            res.send(err);
+          else
+            res.send({ message: 'Item updated!' });
         });
 
       });
@@ -62,9 +71,10 @@ module.exports = function(app, express) {
       Item.remove({
         _id: req.params.itemId
       }, function(err, item) {
-        if (err) res.send(err);
-
-        res.json({ message: 'Successfully deleted' });
+        if (err)
+          res.send(err);
+        else
+          res.json({ message: 'Successfully deleted' });
       });
     });
 

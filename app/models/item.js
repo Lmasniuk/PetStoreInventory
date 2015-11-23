@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
 var Schema = mongoose.Schema;
 
 var ItemSchema = new Schema({
-  id: { type: Number, required: true },
+  // id: { type: Number, required: true },
   name: { type: String, required: true },
   type: {type: String, required: true}.
   description: { type: String, required: false },
