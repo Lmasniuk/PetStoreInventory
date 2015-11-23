@@ -8,12 +8,13 @@ module.exports = function(app, express) {
     // TODO: validation
     .post(function(req, res) {
       var item = new Item();
+      item.type = req.body.type;
       item.name = req.body.name || '';
-      item.description = req.body.description || '';
+     // item.description = req.body.description || '';
       item.quantity = req.body.quantity || 1;
-      item.location = req.body.location || '';
+     // item.location = req.body.location || '';
       item.brand = req.body.brand || '';
-      item.price = req.body.price || '';
+     // item.price = req.body.price || '';
       item.date_added = new Date().toISOString();
 
       item.save(function(err) {

@@ -4,16 +4,17 @@ var Schema = mongoose.Schema;
 
 var ItemSchema = new Schema({
   // id: { type: Number, required: true },
-  name: { type: String, required: true },
   type: {type: String, required: true},
+  name: { type: String, required: true },
+  brand: { type: String, required: false },
+  quantity: { type: Number, required: true },
   description: { type: String, required: false },
-  quantity: { type: Number, required: false },
-  location: { type: String, required: false },
-  brand: { type: String, required: false },  
+  location: { type: String, required: false },  
   date_added: { type: Date, required: false },
   tags: {type: Array, required: false}
 });
 
+/*
 var ProductSchema = ItemSchema.extend({
 	price: { type: String, required: true }
 });
@@ -49,7 +50,9 @@ var ComputerSchema = AdminEquipmentSchema.extend({
 var CardReaderSchema = AdminEquipmentSchema.extend({
 	bank: {type: String, required: true}
 });
-
+*/
 module.exports = mongoose.model('Item', ItemSchema);
+/*
 module.exports = mongoose.model('Product', ProductSchema);
 module.exports = mongoose.model('AdminEquipment', AdminEquipmentSchema);
+*/

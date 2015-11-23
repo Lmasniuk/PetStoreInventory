@@ -14,7 +14,7 @@ angular.module('inventoryApp')
 .controller('itemAddController', function($scope, Item) {
   $scope.itemData = {};
 
-  $scope.updateItem = function() {
+  $scope.addItem = function() {
     Item.create($scope.itemData).success(function(response) {
       console.log(response);
       if (response.errors) {
