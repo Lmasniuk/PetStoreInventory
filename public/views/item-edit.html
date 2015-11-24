@@ -2,12 +2,20 @@
   <div class="form-group" ng-hide="home.hideDuration">
     <label>Name:</label>
     <input class="form-control" type="text" ng-model="itemData.name">
-    <label>Price:</label>
-    <input class="form-control" type="text" ng-model="itemData.price">
     <label>Brand:</label>
     <input class="form-control" type="text" ng-model="itemData.brand">
     <label>Quantity:</label>
-    <input class="form-control" type="text" ng-model="itemData.quantity">
+    <input class="form-control" type="number" min="1" ng-model="itemData.quantity">
+    <div ng-show="itemData.type == 'stock'">
+        <label>Price:</label>
+        <input class="form-control" type="text" ng-model="itemData.price">
+    </div>
+    <div ng-show="itemData.type == 'mngmt'">
+        <label>Technical Contact:</label>
+        <input class="form-control" type="text" ng-model="itemData.contact">
+        <label>Condition:</label>
+        <input class="form-control" type="text" ng-model="itemData.condition">
+    </div>
     <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="updateItem()">Save</button>
     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
   </div>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
-
+  <div ng-controller="mainController">
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-6 well shadow item-list-container">
@@ -41,12 +41,13 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="addModalLabel">add an item</h4>
+            <h4 class="modal-title" id="addModalLabel">Add an Item</h4>
           </div>
           <div ng-include="'views/item-add.html'" ng-controller="itemAddController"></div>
         </div>
       </div>
     </div>
+  </div>
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
@@ -54,6 +55,7 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="js/app.js"></script>
     <script src="js/services/itemService.js"></script>
+    <script src="js/controllers/mainController.js"></script>
     <script src="js/controllers/itemListController.js"></script>
     <script src="js/controllers/itemDetailController.js"></script>
     <script src="js/controllers/itemEditController.js"></script>

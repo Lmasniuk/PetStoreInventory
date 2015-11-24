@@ -2,17 +2,17 @@ body {
   background-color: #e8e8e8;
 }
 .item-details-container {
-  min-height: 600px;
+  min-height: 640px;
   position: relative;
-  margin-left: 600px; 
+  margin-left: 50%; 
 }
 .item-list-container {
   top: 0;
   left: 0;
   overflow-y: scroll;
   position: fixed;
-  width: 600px;
-  height: 90%;
+  width: 50%;
+  height: 100%;
 }
 .shadow {
   -webkit-box-shadow: 0 0 2px black;

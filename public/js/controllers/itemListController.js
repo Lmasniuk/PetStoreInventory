@@ -14,16 +14,16 @@
 angular.module('inventoryApp')
 .controller('itemListController', function($scope, $location, Item) {
   $scope.orderProp = '-date_added';
-  $scope.selectedItemId = -1;
+  
 
   $scope.selectItem = function(item) {
     $scope.selectedItemId = item._id;
   }
 
-  // grab all the items at page load
-  Item.all().success(function(data) {
-    $scope.items = data;
-  });
+  // // grab all the items at page load
+  // Item.all().success(function(data) {
+  //   $scope.items = data;
+  // });
 
   // function to delete a item
   $scope.deleteItem = function() {
