@@ -14,7 +14,9 @@ module.exports = function(app, express) {
       item.quantity = req.body.quantity || 1;
      // item.location = req.body.location || '';
       item.brand = req.body.brand || '';
-     // item.price = req.body.price || '';
+      item.price = req.body.price || '';
+      item.condition = req.body.condition || '';
+      item.contact = req.body.contact || '';
       item.date_added = new Date().toISOString();
 
       item.save(function(err) {

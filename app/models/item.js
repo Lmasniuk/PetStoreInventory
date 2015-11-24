@@ -11,7 +11,10 @@ var ItemSchema = new Schema({
   description: { type: String, required: false },
   location: { type: String, required: false },  
   date_added: { type: Date, required: false },
-  tags: {type: Array, required: false}
+  tags: {type: Array, required: false},
+  price: { type: String, required: false },
+  condition: {type: String, required: false},
+  contact: {type: String, required: false}
 });
 
 /*

@@ -4,7 +4,9 @@
   <li class="list-group-item"><strong>id:</strong> {{item._id}}</li>
   <li class="list-group-item"><strong>Type:</strong> {{item.type}}</li>
   <li class="list-group-item"><strong>Name:</strong>  {{item.name}}</li>
-  <li class="list-group-item"><strong>Price: </strong>  {{item.price}}</li>
+  <li ng-show="item.type == 'stock'"class="list-group-item"><strong>Price: </strong>  {{item.price}}</li>
   <li class="list-group-item"><strong>Brand: </strong>  {{item.brand}}</li>
   <li class="list-group-item"><strong>Quantity: </strong>  {{item.quantity}}</li>
+  <li ng-show="item.type == 'mngmt'" class="list-group-item"><strong>Condition: </strong>  {{item.condition}}</li>
+  <li ng-show="item.type == 'mngmt'" class="list-group-item"><strong>Technical Contact: </strong>  {{item.contact}}</li>
 </ul>
