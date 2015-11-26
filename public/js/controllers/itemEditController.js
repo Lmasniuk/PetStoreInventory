@@ -12,7 +12,7 @@
  * @param Item Our own defined service for interfacing with http requests.
  */
 angular.module('inventoryApp')
-.controller('itemEditController', function($scope, $route, $routeParams, Item) {
+.controller('itemEditController', function($scope,$rootScope,$route, $routeParams, Item) {
   $scope.itemData = {};
 
   $scope.updateItem = function() {
@@ -25,8 +25,10 @@ angular.module('inventoryApp')
         console.log('Update successful', response);
         $scope.itemData = {};
         $route.reload();
+        Item.all().success(function(data) {
+          $rootScope.items = data;
+        });
       }
     });
   };
-
 });

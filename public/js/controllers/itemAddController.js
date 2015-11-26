@@ -11,8 +11,9 @@
  * @param Item Our own defined service for interfacing with http requests.
  */
 angular.module('inventoryApp')
-.controller('itemAddController', function($scope, Item) {
+.controller('itemAddController', function($scope,$rootScope, Item) {
   $scope.itemData = {};
+  $scope.itemData.quantity = 1;
 
   $scope.addItem = function() {
     Item.create($scope.itemData).success(function(response) {
@@ -22,9 +23,11 @@ angular.module('inventoryApp')
       } else {
         console.log('Create successful', response);
         $scope.itemData = {};
+        Item.all().success(function(data) {
+          $rootScope.items = data;
+        });
       }
     });
   };
-
 });
 
