@@ -12,12 +12,6 @@
             <input class="form-control" type="text" ng-model="itemData.brand">
             <label>Quantity:</label>
             <input class="form-control" type="number" min="1" ng-model="itemData.quantity">
-            <strong ng-show="itemData.type == 'stock'">Status:</strong>
-            <select id="state" ng-show="itemData.type == 'stock'" class="form-control" ng-model="itemData.state">
-                <option value="inStore">In Store</option>
-                <option value="inTransit">In Transit</option>
-                <option value="sold">Sold</option>
-            </select>
             <div ng-show="itemData.type == 'stock'">
                 <label>Price:</label>
                 <input class="form-control" type="text" ng-model="itemData.price">
