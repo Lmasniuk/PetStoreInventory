@@ -1,20 +1,20 @@
 <div class="modal-body">
   <div class="form-group" ng-hide="home.hideDuration">
     <label>Name:</label>
-    <input class="form-control" type="text" ng-model="itemData.name">
+    <input class="form-control" type="text" ng-model="item.name">
     <label>Brand:</label>
-    <input class="form-control" type="text" ng-model="itemData.brand">
+    <input class="form-control" type="text" ng-model="item.brand">
     <label>Quantity:</label>
-    <input class="form-control" type="number" min="1" ng-model="itemData.quantity">
-    <div ng-show="itemData.type == 'stock'">
+    <input class="form-control" type="number" min="1" ng-model="item.quantity">
+    <div ng-show="item.type == 'stock'">
         <label>Price:</label>
-        <input class="form-control" type="text" ng-model="itemData.price">
+        <input class="form-control" type="text" ng-model="item.price">
     </div>
-    <div ng-show="itemData.type == 'mngmt'">
+    <div ng-show="item.type == 'mngmt'">
         <label>Technical Contact:</label>
-        <input class="form-control" type="text" ng-model="itemData.contact">
+        <input class="form-control" type="text" ng-model="item.contact">
         <label>Condition:</label>
-        <input class="form-control" type="text" ng-model="itemData.condition">
+        <input class="form-control" type="text" ng-model="item.condition">
     </div>
     <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="updateItem()">Save</button>
     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

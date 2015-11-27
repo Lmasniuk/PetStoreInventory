@@ -13,8 +13,8 @@
  */
 angular.module('inventoryApp')
 
-.controller('itemDetailController', function($scope, $routeParams, Item) {
+.controller('itemDetailController', function($scope,$rootScope, $routeParams, Item) {
   Item.get($routeParams.itemId).success(function(data) {
-    $scope.item = data;
+  	$rootScope.item = data;
   })
 });

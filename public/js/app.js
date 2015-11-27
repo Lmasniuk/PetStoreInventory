@@ -8,7 +8,6 @@
  */
 angular.module('inventoryApp', [
   'ngRoute',
-  // 'mainCtrl',
   'itemService'
 ])
 

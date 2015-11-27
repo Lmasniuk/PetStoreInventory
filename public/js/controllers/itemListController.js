@@ -20,11 +20,6 @@ angular.module('inventoryApp')
     $scope.selectedItemId = item._id;
   }
 
-  // // grab all the items at page load
-  // Item.all().success(function(data) {
-  //   $scope.items = data;
-  // });
-
   // function to delete a item
   $scope.deleteItem = function() {
     if ($location.path() === '/') {
