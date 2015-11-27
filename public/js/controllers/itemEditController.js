@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 /**
  * itemEditController is a controller for
  * the editing view (modal)
@@ -14,6 +16,14 @@
 angular.module('inventoryApp')
 .controller('itemEditController', function($scope,$rootScope,$route, $routeParams, Item) {
   $scope.itemData = {};
+
+  $scope.$on('$routeChangeSuccess', function() {
+      $scope.$route = $route;
+      console.log($routeParams);
+      Item.get($routeParams.itemId).success(function(data) {
+        $scope.itemData = data;
+      });
+  });
 
   $scope.updateItem = function() {
     if (!$routeParams.itemId)
