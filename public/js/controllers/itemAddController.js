@@ -15,6 +15,8 @@ angular.module('inventoryApp')
   $scope.itemData = {};
   $scope.itemData.quantity = 1;
 
+
+
   $scope.addItem = function() {
     Item.create($scope.itemData).success(function(response) {
       console.log(response);
@@ -22,6 +24,7 @@ angular.module('inventoryApp')
         alert('create failed');
       } else {
         console.log('Create successful', response);
+        // console.log($scope.itemData);
         $scope.itemData = {};
         Item.all().success(function(data) {
           $rootScope.items = data;
