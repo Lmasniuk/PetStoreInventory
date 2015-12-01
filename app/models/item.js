@@ -14,8 +14,7 @@ var ItemSchema = new Schema({
   tags: {type: Array, required: false},
   price: { type: String, required: false },
   condition: {type: String, required: false},
-  contact: {type: String, required: false},
-  state: {type: String, required: false}
+  contact: {type: String, required: false}
 });
 
 /*
