@@ -18,11 +18,12 @@ angular.module('inventoryApp')
   $scope.itemData = {};
 
   $scope.$on('$routeChangeSuccess', function() {
-      $scope.$route = $route;
-      // console.log($routeParams);
+    $scope.$route = $route;
+    if ($routeParams.itemId) {
       Item.get($routeParams.itemId).success(function(data) {
         $scope.itemData = data;
       });
+    }
   });
 
   $scope.updateItem = function() {
