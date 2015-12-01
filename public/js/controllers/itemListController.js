@@ -14,7 +14,7 @@
 angular.module('inventoryApp')
 .controller('itemListController', function($scope, $location, Item) {
   $scope.orderProp = '-date_added';
-  
+  $scope.filterProp = '';
 
   $scope.selectItem = function(item) {
     $scope.selectedItemId = item._id;

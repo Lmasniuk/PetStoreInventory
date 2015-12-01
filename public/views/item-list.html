@@ -7,16 +7,22 @@
     </span>
     <input type="text" class="form-control" ng-model="query" placeholder="Search for...">
   </div>
-  <strong>Viewing:</strong>
+  <strong>Sort By:</strong>
   <select id="sort" class="form-control" ng-model="orderProp">
     <option value="name">Alphabetical</option>
     <option value="-date_added">Newest</option>
+  </select>
+  <strong>Filter:</strong>
+  <select id="sort" class="form-control" ng-model="filterProp">
+    <option value="">None</option>
+    <option value="stock">Stock</option>
+    <option value="mngmt">Managerial Equipment</option>
   </select>
 </div>
 <br>
 <ul class="item-list" >
   <li ng-class="{ 'selected-list-item': item._id == selectedItemId }"
-      ng-repeat="item in items | filter:query | orderBy:orderProp">
+      ng-repeat="item in items | filter:query | filter:{type:filterProp} | orderBy:orderProp">
     <a ng-click='selectItem(item)'href="/{{item._id}}">{{item.name}}</a>
   </li>
 </ul>
