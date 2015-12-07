@@ -1,0 +1,368 @@
+\documentclass[letterpaper, 12pt]{article}
+
+% Use the 'fullpage' package to alter the margins to fill the entire page.
+% (By default, the artikel3 class uses very limited margins).
+\usepackage{fullpage}
+
+%% allows table of contents
+\usepackage[utf8]{inputenc}
+%\tableofcontents
+
+% These packages add a few useful math symbols.
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+
+\usepackage{multicol}
+
+\usepackage{arydshln}
+
+%\usepackage[ddmmyyyy]{datetime}
+%\usepackage[nodayofweek]{datetime}
+\usepackage{datetime}
+\usepackage{lastpage}
+
+%Control spacing {left}{before}{after}[right] of sections
+\usepackage{titlesec}
+\titlespacing\section{0mm}{2mm}{2mm}
+\titlespacing\subsection{0mm}{2mm}{2mm}
+%\titlespacing\subsubsection{0mm}{0mm}{0mm}
+
+% Caption because floats suck
+\usepackage{caption}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+% The verbatim package allows pre-formatted text (like code) to be included.
+\usepackage{verbatim}
+
+% The algorithmic package provides a somewhat convenient way to typeset
+% algorithms.
+\usepackage{algorithmic}
+
+% allow name in upper right
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead{}
+\fancyfoot{}
+%\fancyhead[LO]{\date{ \today}\\}
+\fancyhead[LO]{Page \thepage \ of \pageref{LastPage} \\ \the\day \ \shortmonthname \  \the\year \\ \hspace{1ex} \\ }
+\fancyhead[CO]{\large SENG 330: \\ Pet Factory Inventory System \\ Phase Three}
+\fancyhead[RO]{William Birney \\ Logan Masniuk \\ Sina Pinto \\ Beijia (Frances) Yu}
+
+%\lfoot{}
+%\cfoot{}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% LaTex requires a title, author, and date which i leave here as stubs
+\title{\vspace{-8ex}}
+\author{\vspace{-8ex}}
+\date{\vspace{-7ex}}
+
+\headsep = 2.5cm
+%
+%
+%
+%
+%
+%
+% DOCUMENT BEGINS HERE
+\begin{document}
+\fontsize{12}{12}
+\maketitle
+\thispagestyle{fancy}
+
+%
+%
+\noindent \large\textbf{Summary}
+
+\noindent This document describes the implementation and use of a web based inventory system. A graphical user interface has been implemented for viewing items, featuring sample buttons and drop down lists. The application has been developed using a MEAN stack. The setup and infrastructure of the project is described in this report.
+
+
+\tableofcontents
+
+\newpage
+%
+%
+%
+%
+%
+%
+%
+%
+\section{Domain Model and Glossary}
+
+\subsection{Glossary:}
+%
+%items can be flagged "in transit"
+%
+%\begin{multicols}{2}
+\begin{itemize}
+\item Pet Factory (PF): The client company
+\item Person: anyone registered by the company
+\item Staff: Person employed by the company
+\item Inventory: Everything tracked by the company
+\item Item: An entity of the inventory, such as a product
+\item Store: A location that can hold inventory
+\item Serial Number: Unique identifier
+\item Client Code: Source code interpreted by the user's browser
+\item Server Code: Code not visible to a user; it has direct access to the database, and communicates to the client code using HTTP
+\item GET/PUT: HTTP requests to recieve/send data between server and client
+\item JSON: Javascript Object Notation, used for storing/representing data in a human readable format.
+\item MEAN Stack: A full stack web app development strategy that utilizes MongoDB,Express.js, Angular.js, and Node.js
+
+\end{itemize}
+
+\section{Use Cases and Business Model}
+
+\subsection{Use Cases}
+
+\begin{enumerate}
+\item add inventory item manually
+\item add inventory item via scanning barcode
+\item remove inventory item
+\item View inventory items: check quantity
+\item search inventory
+\item check status of product: broken, recall, in store, sold, other store
+\item check price
+%%%%%%%%%%%%
+\item add/remove customer
+\item send out newsletters to customers
+\item check purchase history
+\item build invoice or shopping cart
+\item select tab or charge card
+%%%%%%%%%%%%%%%%%%%%%
+\item change employment status
+\item set employee salary
+%%%%%%%%%%%%%%%%%%%
+\item Generate quarterly profits report
+\item Generate total assets report
+\item Generate total liabilities report
+\item generate expected revenue report
+\end{enumerate}
+
+\subsection{Use Case Diagram}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics{UseCaseDiagram}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%
+
+\section{Requirements}
+
+\begin{enumerate}
+\item Operations modifying inventory data must persist in the database
+\item Employees must be able to add items to the database
+\item Employees must be able to delete items from the database
+\item Employees must be able to change item location in the database
+\item Employees must be able to view items in each store
+\item All stores should simultaneously use the same database
+\item Queries should be completed in under five seconds
+\item All uses should be possible from any location
+\item Software downtime should be less than ten minutes per day
+\end{enumerate}
+
+\subsection{To Do List}
+\begin{itemize}
+\item Implement item editing/removing functionality.
+\item Implement item adding (instantiation) functionality.
+\item Abstract items to have customizable attributes based on item type.
+\end{itemize}
+
+
+%
+%
+
+
+\section{Changelog}
+\begin{enumerate}
+\item Test cases were added that run using the Karma framework
+\item A documentation system was implemented using Yuidoc
+\end{enumerate}
+
+\section{Architecture, Infrastructure, and Platform}
+
+\subsection{Architecture}
+\noindent The inventory system has been implemented using the MEAN stack and Twitter Bootstrap for styling. The MEAN stack is a popular full stack Javascript framework. The MEAN stack + Bootstrap is comprised of the following components:
+\begin{itemize}
+\item MongoDB: An open source, cross platform, document oriented, flexible, NoSQL database. Objects are stored in a human readable JSON-like format.
+\item Express: A Node.js web application server framework that enables the use of the MVC design pattern.
+\item AngularJS: A client-side front end framework that includes directives, dependency injection, and two-way data binding
+\item Node.js: A JavaScript runtime built on Chrome's V8 JavaScript engine.
+\item Twitter Bootstrap: A framework for developing responsive, mobile oriented web applications
+
+\subsection{Infrastructure}
+
+\item Project Hosting:
+ https://github.com/Lmasniuk/PetStoreInventory
+
+\item Installing/Running the application: \\
+Node and NPM must be installed on a machine in order to install and run the web application. Type the following commands into a CLI in order to install and run the current version of the application:
+\begin{verbatim}
+git clone https://github.com/Lmasniuk/PetStoreInventory.git
+cd PetStoreInventory
+npm install
+npm start
+open http://0.0.0.0:8000/
+\end{verbatim}
+
+\item Data Serialization:
+The inventory system contains many inventory items. Each item consists of several attributes such as id, name, price, etc. Each item is stored as a document(equivalent to a row in a SQL table) into an instance of MongoDB. Inside the MongoDB instance, the collection of items are stored in BSON format. When a client accesses the web application, an http request is made to the server to get all the items in the database. The server then retrieves the items, converts them into JSON format, and then sends an http response back containing all items in JSON format. The client can then access and display the items. 
+
+
+\subsection{Platform}
+
+A live version of the application is hosted on Heroku\\
+https://petstore-inventory.herokuapp.com/
+
+
+\section{GUI Screenshots}
+
+%
+%
+\subsection{List View}
+	\begin{centering}
+	\includegraphics[scale=0.65]{list-view}
+    \end{centering}
+    %
+    %
+    %
+    %
+%
+\subsection{Detail View}
+	\begin{centering}
+	\includegraphics[scale=0.65]{details-view}
+    \end{centering}
+    %
+    %
+    %
+    %
+%
+\subsection{Add View}
+	\begin{centering}
+	\includegraphics[scale=0.65]{add-view}
+    \end{centering}
+    %
+    %
+    %
+    
+\section{Implementation Details}
+\noindent The current codebase is organized in a Model/View/Controller design pattern.
+
+\subsection{View}
+\noindent The view consists of two HTML pages: item-detail and item-list. In angular, these HTML dependencies are called `partials', and can be stored in separate files and included as needed to complete a template.
+
+\hspace{1mm}
+
+\noindent There is also an index.html file that acts as a container for the two partials. Within the index, item-list is included using the ngInclude directive, which simply includes an external HTML fragment. The item-detail view, however, is included using ngView, so it can be dynamically changed depending on the current route (which is controlled using the built in routeProvider service). This is to allow the item detail view to be changed on the fly through the user interface.
+
+\vspace{2mm}
+\noindent {\it index.html}
+\vspace{-3mm}\begin{verbatim}
+<div ng-include="`views/item-list.html'"
+    ng-controller="itemListController">
+</div>
+<div ng-view></div>
+\end{verbatim}
+
+\subsection{Model}
+\noindent The model, which is essentially the entity class, is an Angular service; it can be injected as a dependency and used by any controller wishing to GET data from or PUT data to the store. Currently, the data is hardcoded in a javascript array, but in the future the service will make an HTTP call to retrieve the data from the server. The service uses a factory function that generates instances of the service to the rest of the application.
+
+\noindent We use the following factory named ``Item":
+
+\vspace{2mm}
+\noindent {\it itemService.js}
+\vspace{-3mm}\begin{verbatim}
+angular.module(`itemService', []).factory(`Item',
+function() { ... })}
+\end{verbatim}
+
+\noindent In the future, using regular javascript prototypal inheritance, we can create another factory to extend the original. For example:
+
+\vspace{-3mm}\begin{verbatim}
+angular.module(`itemService', []).factory(`specificItem',
+function(Item) { ... })}
+\end{verbatim}
+
+
+\noindent In this example, the factory named ``specificItem" uses the original Item factory as a dependency, inheriting its object prototype. As the app grows, this pattern allows us to avoid code reuse, separate concerns, and facilitate testing.
+
+\subsection{Controller}
+\noindent The app contains an itemListController and itemDetailController.  Each controller contains its own \$scope object, which is essentially the public API used by the view. In other words, any DOM element with the ng-controller attribute will have access to that controller's \$scope, and all of its child nodes as well. The item list controller manages state such as the order of the listed items (orderProp) and the the currently selected item (selectedItemId).
+
+\vspace{2mm}
+\noindent {\it mainCtrl.js}
+\vspace{-3mm}\begin{verbatim}
+angular.module(`mainCtrl',
+[`itemService']).controller(`itemListController',
+function($scope, Item) 
+{
+  $scope.orderProp = `date_added';
+  $scope.selectedItemId = -1;
+}); 
+}
+\end{verbatim}
+
+\section{Git}
+The code for this assignment uses git for version control. The repository is
+hosted on github.  Using git allowed us to maintain an organized history of the project's evolution.  All group members worked on separate branches. Whenever we made a commit, we would push the work to the master branch which is the main trunk of the project. Gits automatic merging algorithms makes pulling a branch that has diverged from our own much easier.
+
+\section{Testing}
+The unit tests for the application were created using the Mocha unit testing framework.  Mocha provides functions such as \texttt{describe} and \texttt{equal} to facilitate unit testing. We also used the Karma program for running the unit tests because mocha js does not provide test running capabilities. Karma requires a test runner which is generally a web browser to run your tests.  For this, we used PhantomJS which is a headless ``browser'' written in javascript so that tests could be run without starting up an actual web browser.  We created four unit tests.  Two of the tests involve testing http requests.  Instead of making actual http requests in our unit tests, we mocked http responses with objects that are the same structure as what our server would actually respond with.  The other two unit tests test the behavior of selecting an item.
+
+\begingroup
+    \fontsize{10pt}{12pt}\selectfont
+\vspace{-3mm}\begin{verbatim}
+describe('inventory app controllers', function(){
+  beforeEach(module('inventoryApp'));
+  // beforeEach(module('itemService'));
+
+  describe('itemListController', function(){
+    var scope, ctrl, $httpBackend;
+
+    beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
+      $httpBackend = _$httpBackend_;
+      $httpBackend.expectGET('/api/items/').
+        respond([{name: 'a'}, {name: 'b'}]);
+
+      scope = $rootScope.$new();
+      ctrl = $controller('itemListController', {$scope: scope});
+    }));
+
+
+    it('should create "items" model with 2 items fetched from xhr', function() {
+      expect(scope.items).toEqual(undefined);
+      $httpBackend.flush();
+      expect(scope.items).toEqual([{name: 'a'}, {name: 'b'}]);
+    });
+
+    it('should update selectedItemId', function() {
+      scope.selectItem({_id: 5});
+      expect(scope.selectedItemId).toBe(5);
+    });
+
+
+    it('should have no item selected at the initial state', function() {
+      expect(scope.selectedItemId).toBe(-1);
+    });
+
+  });
+  \endgroup
+
+\end{verbatim}
+
+
+\section{Documentation}
+Documentation was generated using the program \texttt{yuidoc}.  Yuidoc is an automatic documentation generator designed specifically for javascript code.  It outputs a website containing documentation generated from specialized comments it finds in the project source tree. Here is a screenshot of the documentation generated by Yuidoc.
+
+	\begin{centering}
+	\includegraphics[scale=0.65]{documentation}
+    \end{centering}
+
+\end{document}
