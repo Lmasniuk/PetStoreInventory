@@ -24,7 +24,6 @@ angular.module('inventoryApp')
         alert('create failed');
       } else {
         console.log('Create successful', response);
-        // console.log($scope.itemData);
         $scope.itemData = {};
         Item.all().success(function(data) {
           $rootScope.items = data;

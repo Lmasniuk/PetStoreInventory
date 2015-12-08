@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
-mongoose.connect(process.env.MONGOLAB_URI, function(err) {
+mongoose.connect("mongodb://dbuser:dbpassword123@ds057204.mongolab.com:57204/petstore", function(err) {
   if (err) return console.error(err);
 });
 var port = process.env.PORT || 8000;

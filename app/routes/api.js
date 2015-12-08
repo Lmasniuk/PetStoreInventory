@@ -10,14 +10,15 @@ module.exports = function(app, express) {
       var item = new Item();
       item.type = req.body.type;
       item.name = req.body.name || '';
-     // item.description = req.body.description || '';
       item.quantity = req.body.quantity || 1;
-     // item.location = req.body.location || '';
       item.brand = req.body.brand || '';
       item.price = req.body.price || '';
       item.condition = req.body.condition || '';
       item.contact = req.body.contact || '';
+      item.state = req.body.state || '';
       item.date_added = new Date().toISOString();
+       // item.location = req.body.location || '';
+       // item.description = req.body.description || '';
 
       item.save(function(err) {
         if (err)
@@ -55,9 +56,13 @@ module.exports = function(app, express) {
 
         if (req.body.location) item.location = req.body.location;
         if (req.body.quantity) item.quantity = req.body.quantity;
+        if (req.body.name)     item.name = req.body.name;
         if (req.body.price)    item.price = req.body.price;
         if (req.body.brand)    item.brand = req.body.brand;
-        if (req.body.name)     item.name = req.body.name;
+        if (req.body.quantity)    item.quantity = req.body.quantity;
+        if (req.body.condition)    item.condition = req.body.condition;
+        if (req.body.contact)    item.contact = req.body.contact;
+        if (req.body.state)    item.state = req.body.state;
 
         item.save(function(err) {
           if (err)
@@ -65,7 +70,6 @@ module.exports = function(app, express) {
           else
             res.send({ message: 'Item updated!' });
         });
-
       });
     })
 
