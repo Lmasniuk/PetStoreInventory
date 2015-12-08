@@ -9,12 +9,21 @@
     <div ng-show="itemData.type == 'stock'">
         <label>Price:</label>
         <input class="form-control" type="text" ng-model="itemData.price">
+         <label>Status:</label>
+        <!-- <input class="form-control" type="text" ng-model="itemData.state"> -->
+        <select class="form-control" ng-model="itemData.state">
+                <option value="inStore">In Store</option>
+                <option value="inTransit">In Transit</option>
+                <option value="sold">Sold</option>
+        </select>
+
+
     </div>
     <div ng-show="itemData.type == 'mngmt'">
-        <label>Technical Contact:</label>
-        <input class="form-control" type="text" ng-model="itemData.contact">
         <label>Condition:</label>
         <input class="form-control" type="text" ng-model="itemData.condition">
+        <label>Technical Contact:</label>
+        <input class="form-control" type="text" ng-model="itemData.contact">
     </div>
     <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="updateItem()">Save</button>
     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
