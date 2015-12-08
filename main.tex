@@ -275,7 +275,7 @@ https://petstore-inventory.herokuapp.com/
 \end{verbatim}
 
 \subsection{Model}
-\noindent The model, which is essentially the entity class, is an Angular service; it can be injected as a dependency and used by any controller wishing to GET data from or PUT data to the store. Currently, the data is hardcoded in a javascript array, but in the future the service will make an HTTP call to retrieve the data from the server. The service uses a factory function that generates instances of the service to the rest of the application.
+\noindent The model, which is essentially the entity class, is an Angular service; it can be injected as a dependency and used by any controller wishing to GET data from or PUT data to the store. The service makes an HTTP request to the server in order to retrieve the data. The service uses a factory function that generates instances of the service to the rest of the application.
 
 \noindent We use the following factory named ``Item":
 
@@ -365,6 +365,18 @@ Documentation was generated using the program \texttt{yuidoc}.  Yuidoc is an aut
 	\begin{centering}
 	\includegraphics[scale=0.65]{documentation}
     \end{centering}
+
+\section{What we learned}
+Throughout the various phases of the project, we discovered some strategies that worked well for us and others that were less effective.
+
+\subsection{Phase 1}
+Phase 1 consisted of outlining the problem and modeling a preliminary solution.  The work we did in this phase was useful primarily in three aspects. First, it forced us to think critically about both the problem and the solution simultaneously.  This was important because it helped us decide on the scope of the project.  For example, coming up with requirements while thinking about class diagrams as well helped us avoid defining unrealistic or infeasible requirements and use cases.  Additionally, designing the class and UML diagrams provided us with a reference that allowed team members to visualize the application's architecture and facilitate discussion. For example, while deciding on the initial architecture, we drew class and UML diagrams on the whiteboard so we could easily erase and modify classes.  However, one pitfall of this phase is spending too much time thinking about the application's architecture before even writing any code.  As we later discovered, once we began coding the application, we had to modify our architecture based on the constraints of the framework we used. For instance, we 
+
+\subsection{Phase 2}
+In Phase 2, we 
+
+\subsection{Phase 3}
+In the third phase of the project, we worked on version control, data serialization, testing, and documentation. For version control, git worked well for us. Our workflow consisted of each team member working on their own individual branch and pushing to and pulling from a master branch.  This workflow worked well for us as we could publish changes to the source code on our branches for others to review before merging them into the main trunk.  One issue we ran into was overwriting published history in a group project by ``force pushing'' when the history of a branch has significanly diverged from the master. This made it difficult for other team members, who would consequently have a different history than what was published, from pulling in the changes. We found that instead of force pushing, it's better to push using a merge strategy of ``ours'' when the branches have diverged significantly, as this strategy would allow us to merge our changes without modifying history.  As our project was hosted on Github, we used the Github's ``issues'' feature to manage bugfixes and new features, which we found quite useful. Data was serialized into JSON-like objects and saved into MongoDB, which we found to be an effective strategy for a project of such small scale because MongoDB's flexibility allowed us to easily change the DB schema. We did not see a whole lot of benefit from writing unit tests primarily because we created them at a late stage in the project's development. For future projects, starting to write unit tests early on would probably be more valuable. While we did not use the automatically generated documentation ourselves, we found that the fact that it forced us to write organized, well-formatted comments was useful for the whole team.
 
 \end{document}
 
