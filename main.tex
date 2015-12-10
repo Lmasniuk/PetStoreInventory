@@ -334,14 +334,13 @@ The code for this assignment uses git for version control. The repository is
 hosted on github.  Using git allowed us to maintain an organized history of the project's evolution.  All group members worked on separate branches. Whenever we made a commit, we would push the work to the master branch which is the main trunk of the project. Gits automatic merging algorithms makes pulling a branch that has diverged from our own much easier.
 
 \section{Testing}
-The unit tests for the application were created using the Mocha unit testing framework.  Mocha provides functions such as \texttt{describe} and \texttt{equal} to facilitate unit testing. We also used the Karma program for running the unit tests because mocha js does not provide test running capabilities. Karma requires a test runner which is generally a web browser to run your tests.  For this, we used PhantomJS which is a headless ``browser'' written in javascript so that tests could be run without starting up an actual web browser.  We created four unit tests.  Two of the tests involve testing http requests.  Instead of making actual http requests in our unit tests, we mocked http responses with objects that are the same structure as what our server would actually respond with.  The other two unit tests test the behavior of selecting an item.
+The unit tests for the application were created using the Mocha unit testing framework.  Mocha provides functions such as \texttt{describe} and \texttt{equal} to facilitate unit testing. We also used the Karma program for running the unit tests because mocha js does not provide test running capabilities. Karma requires a test runner which is generally a web browser to run your tests.  For this, we used PhantomJS which is a headless ``browser'' written in javascript so that tests could be run without starting up an actual web browser.  We created four unit tests.  Two of the tests involve testing http requests.  Instead of making actual http requests in our unit tests, we mocked http responses with objects that are the same structure as what our server would actually respond with.  The other two unit tests test the behavior of selecting an item. Also note that the unit test titled ``should have no item selected at the initial state'' is quite fragile as it depends on an arbitrary convention used in the implementation, and would break if that were to change. A better test would query the DOM for a node with the selected item attribute. However, his would would become a bit more complicated as we would need to compile the angular template in order to build the DOM tree. Overall, we learned that writing automated tests for a full stack web application can get somewhat hairy, even for a relatively small project.
 
 \begingroup
     \fontsize{10pt}{12pt}\selectfont
 \vspace{-3mm}\begin{verbatim}
 describe('inventory app controllers', function(){
   beforeEach(module('inventoryApp'));
-  // beforeEach(module('itemService'));
 
   describe('itemListController', function(){
     var scope, ctrl, $httpBackend;
@@ -372,6 +371,25 @@ describe('inventory app controllers', function(){
       expect(scope.selectedItemId).toBe(-1);
     });
 
+
+  describe('itemDetailController', function(){
+    var scope, ctrl, $httpBackend;
+
+    beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
+      $httpBackend = _$httpBackend_;
+      $httpBackend.expectGET('/api/items/').
+        respond({name: 'a'});
+
+              scope = $rootScope.$new();
+      ctrl = $controller('itemListController', {$scope: scope});
+    }));
+
+
+    it('should create "items" model with 1 item fetched from xhr', function() {
+      expect(scope.items).toEqual(undefined);
+      $httpBackend.flush();
+      expect(scope.items).toEqual({name: 'a'});
+    });
   });
 \end{verbatim}
 \endgroup
@@ -387,7 +405,7 @@ Documentation was generated using the program \texttt{yuidoc}.  Yuidoc is an aut
 Throughout the various phases of the project, we discovered some strategies that worked well for us and others that were less effective.
 
 \subsection{Phase 1}
-Phase 1 consisted of outlining the problem and modeling a preliminary solution.  The work we did in this phase was useful primarily in three aspects. First, it forced us to think critically about both the problem and the solution simultaneously.  This was important because it helped us decide on the scope of the project.  For example, coming up with requirements while thinking about class diagrams as well helped us avoid defining unrealistic or infeasible requirements and use cases.  Additionally, designing the class and UML diagrams provided us with a reference that allowed team members to visualize the application's architecture and facilitate discussion. For example, while deciding on the initial architecture, we drew class and UML diagrams on the whiteboard so we could easily erase and modify classes.  However, one pitfall of this phase is spending too much time thinking about the application's architecture before even writing any code.  As we later discovered, once we began coding the application, we had to modify our architecture based on the constraints of the framework we used. For instance, we ran into an issue where we wanted two Angular controllers to communicate that we ended up solving by adding a ``parent'' controller to facilitate this.
+Phase 1 consisted of outlining the problem and modeling a preliminary solution.  The work we did in this phase was useful primarily in a few aspects. First, it forced us to think critically about both the problem and the solution simultaneously.  This was important because it helped us decide on the scope of the project.  For example, coming up with requirements while thinking about class diagrams as well helped us avoid defining unrealistic or infeasible requirements and use cases.  Secondly, designing the class and UML diagrams provided us with a reference that allowed team members to visualize the application's architecture and facilitate discussion. For example, while deciding on the initial architecture, we drew class and UML diagrams on a whiteboard so we could easily erase and modify classes.  However, one pitfall of this phase is spending too much time thinking about the application's architecture before even writing any code.  As we later discovered, once we began coding the application, we had to modify our architecture based on the constraints of the framework we used. For instance, we ran into an issue where we wanted two Angular controllers to communicate that we ended up solving by adding a ``parent'' controller to facilitate this.
 
 \subsection{Phase 2}
 In Phase 2, we sorted through the logistics of collaborative development and began writing the code. One of the issues we ran into during this phase involved using node.js on a Windows environment. Unfortuantely, we found that there are some quirks involved in using node.js on Windows machines, which was the case for some team members.  Fortuantely, these were resolved fairly quickly. Something that worked well for us in this phase was finding a learning resource to help us learn the various tools and frameworks along the way. Choosing a good resource for your team is very important particularly when you're using unfamiliar tools.
