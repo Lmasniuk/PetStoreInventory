@@ -131,11 +131,11 @@
 \item Item: An entity of the inventory, such as a product
 \item Store: A location that can hold inventory
 \item Serial Number: Unique identifier
-\item Client Code: Source code interpreted by the user's browser
-\item Server Code: Code not visible to a user; it has direct access to the database, and communicates to the client code using HTTP
+\item Client Code: Source code run by the user's browser; it typically controls the webpage's UI
+\item Server Code: Code that is run on the server; it typically interacts with a database and responds to HTTP requests from the client
 \item GET/POST: HTTP requests to recieve/send data between server and client
-\item JSON: Javascript Object Notation, used for storing/representing data in a human readable format.
-\item MEAN Stack: A full stack web app development strategy that utilizes MongoDB,Express.js, Angular.js, and Node.js
+\item JSON: Javascript Object Notation, used for storing/representing data in a human readable format
+\item MEAN Stack: A full stack web app development strategy that utilizes MongoDB, Express.js, Angular.js, and Node.js
 
 \end{itemize}
 
@@ -356,7 +356,7 @@ The code for this assignment uses git for version control. The repository is
 hosted on github.  Using git allowed us to maintain an organized history of the project's evolution.  All group members worked on separate branches. Whenever we made a commit, we would push the work to the master branch which is the main trunk of the project. Gits automatic merging algorithms makes pulling a branch that has diverged from our own much easier.
 
 \section{Testing}
-The unit tests for the application were created using the Mocha unit testing framework.  Mocha provides functions such as \texttt{describe} and \texttt{equal} to facilitate unit testing. We also used the Karma program for running the unit tests because mocha js does not provide test running capabilities. Karma requires a test runner which is generally a web browser to run your tests.  For this, we used PhantomJS which is a headless ``browser'' written in javascript so that tests could be run without starting up an actual web browser.  We created four unit tests.  Two of the tests involve testing http requests.  Instead of making actual http requests in our unit tests, we mocked http responses with objects that are the same structure as what our server would actually respond with.  The other two unit tests test the behavior of selecting an item. Also note that the unit test titled ``should have no item selected at the initial state'' is quite fragile as it depends on an arbitrary convention used in the implementation, and would break if that were to change. A better test would query the DOM for a node with the selected item attribute. However, his would would become a bit more complicated as we would need to compile the angular template in order to build the DOM tree. Overall, we learned that writing automated tests for a full stack web application can get somewhat hairy, even for a relatively small project.
+The unit tests for the application were created using the Mocha unit testing framework.  Mocha provides functions such as \texttt{describe} and \texttt{equal} to facilitate unit testing. We also used the Karma program for running the unit tests because mocha js does not provide test running capabilities. Karma requires a test runner which is generally a web browser to run your tests.  For this, we used PhantomJS which is a headless ``browser'' written in javascript so that tests could be run without starting up an actual web browser.  We created four unit tests.  Two of the tests involve testing http requests.  Instead of making actual http requests in our unit tests, we mocked http responses with objects that are the same structure as what our server would actually respond with. (Note that unit tests we wrote only test the client side code).  The other two unit tests test the behavior of selecting an item. Also note that the unit test titled ``should have no item selected at the initial state'' is quite fragile as it depends on an arbitrary convention used in the implementation, and would break if that were to change. (Namely, the assumption that \$scope.selectedItemId has a value of -1 when no items are selected).  A better test might query the DOM for a node with the selected item attribute. However, his would would become a bit more complicated as we would need to compile the angular template in order to build the DOM tree. Overall, we learned that writing automated tests for a full stack web application can get somewhat hairy, even for a relatively small project.
 
 \begingroup
     \fontsize{10pt}{12pt}\selectfont
